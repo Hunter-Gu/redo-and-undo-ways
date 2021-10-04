@@ -1,25 +1,8 @@
 import test from 'ava';
 
-import { getDiffByBFS, getPropsAmount, isDiffSimply, joinPath } from './bfs';
+import { getDiffByBFS } from './bfs';
 
-test('joinPath()', (t) => {
-	t.deepEqual(joinPath('join1', 'join2'), 'join1.join2');
-	t.deepEqual(joinPath('join1.join2', 'join3'), 'join1.join2.join3');
-});
-
-test('getPropsAmount()', (t) => {
-	t.deepEqual(getPropsAmount({}), 0);
-	t.deepEqual(getPropsAmount({ a: 'a' }), 1);
-	t.deepEqual(getPropsAmount({ a: { b: 'b' } }), 1);
-});
-
-test("checkDiffSimply()", t => {
-	t.is(isDiffSimply('nail', 1), true)
-	t.is(isDiffSimply('nail', "hunter"), true)
-	t.is(isDiffSimply({ name: 'string' }, { age: 18 }), false)
-})
-
-test('BFS() diff by string value in object', (t) => {
+test('getDiffByBFS() diff by string value in object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {
@@ -58,7 +41,7 @@ test('BFS() diff by string value in object', (t) => {
 	});
 });
 
-test('BFS() diff by string value in simple object', (t) => {
+test('getDiffByBFS() diff by string value in simple object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {
@@ -89,7 +72,7 @@ test('BFS() diff by string value in simple object', (t) => {
 	});
 });
 
-test('BFS() diff by object value in object', (t) => {
+test('getDiffByBFS() diff by object value in object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {
@@ -128,7 +111,7 @@ test('BFS() diff by object value in object', (t) => {
 	});
 });
 
-test('BFS() diff by object value in simple object', (t) => {
+test('getDiffByBFS() diff by object value in simple object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {
@@ -167,7 +150,7 @@ test('BFS() diff by object value in simple object', (t) => {
 	});
 });
 
-test('BFS() diff by string value in simple array(do not change array)', (t) => {
+test('getDiffByBFS() diff by string value in simple array(do not change array)', (t) => {
 	const oldValue = {
 		children: [
 			{
@@ -206,7 +189,7 @@ test('BFS() diff by string value in simple array(do not change array)', (t) => {
 	});
 });
 
-test('BFS() diff by remove prop in object', (t) => {
+test('getDiffByBFS() diff by remove prop in object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {
@@ -236,7 +219,7 @@ test('BFS() diff by remove prop in object', (t) => {
 	});
 });
 
-test('BFS() diff by add new prop in object', (t) => {
+test('getDiffByBFS() diff by add new prop in object', (t) => {
 	const oldValue = {
 		name: 'input',
 		attributes: {

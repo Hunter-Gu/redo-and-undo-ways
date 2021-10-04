@@ -1,8 +1,8 @@
 /* eslint-disable functional/prefer-readonly-type */
-/* eslint-disable functional/functional-parameters */
 /* eslint-disable functional/no-loop-statement */
 /* eslint-disable functional/immutable-data */
 import { Obj, Result } from './types';
+import { getPropsAmount, isDiffSimply, joinPath } from './utils';
 
 /**
  * !just simply consider it will only change one path in one operation!
@@ -82,20 +82,5 @@ export function getDiffByBFS(newObj: Obj, oldObj: Obj): Result | null {
 	return null;
 }
 
-export function isDiffSimply(newValue: unknown, oldValue: unknown) {
-	if (typeof newValue !== typeof oldValue) {
-		return true;
-	} else if (typeof newValue !== 'object') {
-		return newValue !== oldValue;
-	} else {
-		return false;
-	}
-}
 
-export function joinPath(...paths: string[]) {
-	return paths.filter(Boolean).join('.');
-}
 
-export function getPropsAmount(obj: Obj) {
-	return Object.keys(obj).length;
-}
